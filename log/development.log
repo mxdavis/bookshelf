@@ -20,3 +20,378 @@ Migrating to CreateAuthors (20180226110732)
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "authors" ("first_name", "last_name", "birth_year", "is_alive", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Sam"], ["last_name", "Brown"], ["birth_year", 1895], ["is_alive", "f"], ["created_at", "2018-02-26 11:13:03.686269"], ["updated_at", "2018-02-26 11:13:03.686269"]]
   [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/gi" for 127.0.0.1 at 2018-02-27 09:24:22 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb (193.6ms)
+Completed 200 OK in 209ms (Views: 205.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:24:24 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 200 OK in 58ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2018-02-27 09:24:24 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:24:26 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.4ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 33ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:24:32 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.3ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/gi" for 127.0.0.1 at 2018-02-27 09:26:18 +0200
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb (3.2ms)
+Completed 200 OK in 16ms (Views: 12.4ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:26:18 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 200 OK in 35ms (Views: 4.7ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:34:08 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+Completed 500 Internal Server Error in 6ms
+
+
+  
+NameError (uninitialized constant PairType):
+  
+app/graphql/types/author_type.rb:17:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:34:29 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+Completed 500 Internal Server Error in 8ms
+
+
+  
+NoMethodError (undefined method `float' for #<GraphQL::Define::TypeDefiner:0x007fe749a7ab38>
+Did you mean?  Float):
+  
+app/graphql/types/pair_type.rb:5:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started GET "/gi" for 127.0.0.1 at 2018-02-27 09:34:41 +0200
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb (3.8ms)
+Completed 200 OK in 18ms (Views: 13.5ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:34:41 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 500 Internal Server Error in 0ms
+
+
+  
+NoMethodError (undefined method `float' for #<GraphQL::Define::TypeDefiner:0x007fe749a7ab38>
+Did you mean?  Float):
+  
+app/graphql/types/pair_type.rb:5:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:34:41 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 500 Internal Server Error in 0ms
+
+
+  
+NoMethodError (undefined method `float' for #<GraphQL::Define::TypeDefiner:0x007fe749a7ab38>
+Did you mean?  Float):
+  
+app/graphql/types/pair_type.rb:5:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:34:43 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+Completed 500 Internal Server Error in 0ms
+
+
+  
+NoMethodError (undefined method `float' for #<GraphQL::Define::TypeDefiner:0x007fe749a7ab38>
+Did you mean?  Float):
+  
+app/graphql/types/pair_type.rb:5:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:35:53 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:39:52 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `to_a' for 1:Fixnum
+Did you mean?  to_yaml
+               to_s
+               to_param
+               to_c
+               to_d
+               to_r
+               to_i
+               to_f):
+  
+app/models/author.rb:7:in `publication_years'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:40:10 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `mao' for [1, 2, 3, 4, 5, 6, 7, 8, 9]:Array
+Did you mean?  max
+               map):
+  
+app/models/author.rb:7:in `publication_years'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:40:30 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.7ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/models/author.rb:7:in `map'
+app/models/author.rb:7:in `publication_years'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started GET "/gi" for 127.0.0.1 at 2018-02-27 09:41:01 +0200
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb (3.1ms)
+Completed 200 OK in 16ms (Views: 12.4ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:41:02 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 200 OK in 29ms (Views: 5.5ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:41:05 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:44:18 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n    all_authors\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n    all_authors\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+Completed 200 OK in 12ms (Views: 0.2ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:45:07 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n    all_authors {\n      full_name\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n    all_authors {\n      full_name\n    }\n  }\n}\n", "variables"=>nil, "operationName"=>nil}}
+Completed 200 OK in 2ms (Views: 0.2ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:45:32 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n  all_authors {\n      full_name\n    }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n  all_authors {\n      full_name\n    }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors"[0m
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:47:18 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n  all_authors {\n      full_name\n      last_name\n    }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n  all_authors {\n      full_name\n      last_name\n    }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors"[0m
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:47:28 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n  all_authors {\n      full_name\n      last_name\n      publication_years\n    }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n  all_authors {\n      full_name\n      last_name\n      publication_years\n    }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors"[0m
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 09:49:48 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n  all_authors {\n      full_name\n      last_name\n      publication_years\n    }\n}\n", "variables"=>nil, "operationName"=>nil, "graphql"=>{"query"=>"{\n  author(id:1){\n    first_name\n    full_name\n    coordinates {\n      latitude\n      longitude\n    }\n    publication_years\n  }\n  all_authors {\n      full_name\n      last_name\n      publication_years\n    }\n}\n", "variables"=>nil, "operationName"=>nil}}
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? ORDER BY "authors"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors"[0m
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 21:59:14 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false)\n  id\n  full_name\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false)\n  id\n  full_name\n}\n", "variables"=>nil}}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Type):
+  
+app/graphql/types/mutation_type.rb:4:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:05:57 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false)\n  id\n  full_name\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false)\n  id\n  full_name\n}\n", "variables"=>nil}}
+Completed 500 Internal Server Error in 10ms
+
+
+  
+NameError (uninitialized constant Type):
+  
+app/graphql/types/mutation_type.rb:4:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:06:43 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false)\n  id\n  full_name\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false)\n  id\n  full_name\n}\n", "variables"=>nil}}
+Completed 500 Internal Server Error in 11ms
+
+
+  
+GraphQL::Define::NoDefinitionError (GraphQL::Field can't define 'relative'):
+  
+app/graphql/types/mutation_type.rb:10:in `block (2 levels) in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started GET "/gi" for 127.0.0.1 at 2018-02-27 22:06:47 +0200
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb (153.1ms)
+Completed 200 OK in 175ms (Views: 169.6ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:06:48 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 500 Internal Server Error in 0ms
+
+
+  
+GraphQL::Define::NoDefinitionError (GraphQL::Field can't define 'relative'):
+  
+app/graphql/types/mutation_type.rb:10:in `block (2 levels) in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:06:48 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 500 Internal Server Error in 0ms
+
+
+  
+GraphQL::Define::NoDefinitionError (GraphQL::Field can't define 'relative'):
+  
+app/graphql/types/mutation_type.rb:10:in `block (2 levels) in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:06:49 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false)\n  id\n  full_name\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false)\n  id\n  full_name\n}\n", "variables"=>nil}}
+Completed 500 Internal Server Error in 0ms
+
+
+  
+GraphQL::Define::NoDefinitionError (GraphQL::Field can't define 'relative'):
+  
+app/graphql/types/mutation_type.rb:10:in `block (2 levels) in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started GET "/gi" for 127.0.0.1 at 2018-02-27 22:09:33 +0200
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/malkadavis/.rvm/gems/ruby-2.3.1/gems/graphiql-rails-1.4.5/app/views/graphiql/rails/editors/show.html.erb (4.5ms)
+Completed 200 OK in 18ms (Views: 13.2ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:09:34 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 200 OK in 48ms (Views: 6.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:09:35 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n  }\n  id\n  full_name\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n  }\n  id\n  full_name\n}\n", "variables"=>nil}}
+Completed 200 OK in 2ms (Views: 0.2ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:09:57 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n  }\n  id\n  full_name\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n  }\n  id\n  full_name\n}\n", "variables"=>nil}}
+Completed 200 OK in 1ms (Views: 0.3ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:10:32 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n    full_name\n  }\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"Jim\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n    full_name\n  }\n}\n", "variables"=>nil}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "authors" ("first_name", "last_name", "birth_year", "is_alive", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Jim"], ["last_name", "Smith"], ["birth_year", 1900], ["is_alive", "f"], ["created_at", "2018-02-27 20:10:32.911100"], ["updated_at", "2018-02-27 20:10:32.911100"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 3.2ms)
+
+
