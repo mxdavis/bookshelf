@@ -5,7 +5,7 @@ Types::AuthorType = GraphQL::ObjectType.define do
   field :last_name, types.String
   field :birth_year, types.Int
   field :is_alive, types.Boolean
-  field :id, types.ID
+  field :id, !types.ID
 
   field :full_name, types.String do
     description "The full name of the author"
