@@ -395,3 +395,33 @@ Processing by GraphqlController#execute as */*
 Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 3.2ms)
 
 
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:19:54 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"John\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n    full_name\n  }\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"John\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n    full_name\n  }\n}\n", "variables"=>nil}}
+Completed 500 Internal Server Error in 11ms
+
+
+  
+NameError (uninitialized constant Mutation):
+  
+app/graphql/types/mutation_type.rb:13:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:20:48 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"John\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n    full_name\n  }\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"John\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n    full_name\n  }\n}\n", "variables"=>nil}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "authors" ("first_name", "last_name", "birth_year", "is_alive", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "John"], ["last_name", "Smith"], ["birth_year", 1900], ["is_alive", "f"], ["created_at", "2018-02-27 20:20:48.693393"], ["updated_at", "2018-02-27 20:20:48.693393"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 42ms (Views: 0.3ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:20:56 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  createAuthor(first_name:\"Josh\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n    full_name\n  }\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  createAuthor(first_name:\"Josh\", last_name: \"Smith\", birth_year: 1900, is_alive: false) {\n    id\n    full_name\n  }\n}\n", "variables"=>nil}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "authors" ("first_name", "last_name", "birth_year", "is_alive", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Josh"], ["last_name", "Smith"], ["birth_year", 1900], ["is_alive", "f"], ["created_at", "2018-02-27 20:20:56.138747"], ["updated_at", "2018-02-27 20:20:56.138747"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
