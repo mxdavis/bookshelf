@@ -425,3 +425,13 @@ Processing by GraphqlController#execute as */*
 Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.6ms)
 
 
+Started POST "/graphql" for 127.0.0.1 at 2018-02-27 22:26:26 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  updateAuthor(id:3, first_name:\"Jack\") {\n    id\n    full_name\n  }\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  updateAuthor(id:3, first_name:\"Jack\") {\n    id\n    full_name\n  }\n}\n", "variables"=>nil}}
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "authors" SET "first_name" = ?, "updated_at" = ? WHERE "authors"."id" = ?[0m  [["first_name", "Jack"], ["updated_at", "2018-02-27 20:26:26.358295"], ["id", 3]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 50ms (Views: 0.3ms | ActiveRecord: 2.6ms)
+
+
