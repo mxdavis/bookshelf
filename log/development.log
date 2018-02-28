@@ -435,3 +435,45 @@ Processing by GraphqlController#execute as */*
 Completed 200 OK in 50ms (Views: 0.3ms | ActiveRecord: 2.6ms)
 
 
+Started POST "/graphql" for 127.0.0.1 at 2018-02-28 11:46:00 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation createAuthor($author: AuthorInputType) {\n  createAuthor(author: $author) {\n    id\n    full_name\n  }\n}\n", "variables"=>{"author"=>{"first_name"=>"Mike", "last_name"=>"Smith", "birth_year"=>1954, "is_alive"=>true}}, "operationName"=>"createAuthor", "graphql"=>{"query"=>"mutation createAuthor($author: AuthorInputType) {\n  createAuthor(author: $author) {\n    id\n    full_name\n  }\n}\n", "variables"=>{"author"=>{"first_name"=>"Mike", "last_name"=>"Smith", "birth_year"=>1954, "is_alive"=>true}}, "operationName"=>"createAuthor"}}
+Completed 500 Internal Server Error in 12ms
+
+
+  
+NameError (uninitialized constant Type):
+  
+app/graphql/types/author_type.rb:1:in `<top (required)>'
+app/graphql/types/query_type.rb:14:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-28 11:47:17 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation createAuthor($author:AuthorInputType) {\n  createAuthor(author: $author) {\n    id\n    full_name\n  }\n}\n", "variables"=>{"author"=>{"first_name"=>"Mike", "last_name"=>"Smith", "birth_year"=>1954, "is_alive"=>true}}, "operationName"=>"createAuthor", "graphql"=>{"query"=>"mutation createAuthor($author:AuthorInputType) {\n  createAuthor(author: $author) {\n    id\n    full_name\n  }\n}\n", "variables"=>{"author"=>{"first_name"=>"Mike", "last_name"=>"Smith", "birth_year"=>1954, "is_alive"=>true}}, "operationName"=>"createAuthor"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "authors" ("first_name", "last_name", "birth_year", "is_alive", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Mike"], ["last_name", "Smith"], ["birth_year", 1954], ["is_alive", "t"], ["created_at", "2018-02-28 09:47:17.132610"], ["updated_at", "2018-02-28 09:47:17.132610"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 77ms (Views: 0.5ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-28 11:51:35 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation updateAuthor($author:AuthorInputType) {\n  updateAuthor(id: 6, author: $author) {\n    id\n    full_name\n  }\n}\n", "variables"=>{"author"=>{"first_name"=>"Gary", "last_name"=>"Smith", "birth_year"=>1954, "is_alive"=>true}}, "operationName"=>"updateAuthor", "graphql"=>{"query"=>"mutation updateAuthor($author:AuthorInputType) {\n  updateAuthor(id: 6, author: $author) {\n    id\n    full_name\n  }\n}\n", "variables"=>{"author"=>{"first_name"=>"Gary", "last_name"=>"Smith", "birth_year"=>1954, "is_alive"=>true}}, "operationName"=>"updateAuthor"}}
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "authors" SET "first_name" = ?, "updated_at" = ? WHERE "authors"."id" = ?[0m  [["first_name", "Gary"], ["updated_at", "2018-02-28 09:51:35.831417"], ["id", 6]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 53ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-28 11:52:40 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation updateAuthor($author:AuthorInputType) {\n  updateAuthor(id: 6, author: $author) {\n    id\n    full_name\n  }\n}\n", "variables"=>{"author"=>{"first_name"=>"Jerry"}}, "operationName"=>"updateAuthor", "graphql"=>{"query"=>"mutation updateAuthor($author:AuthorInputType) {\n  updateAuthor(id: 6, author: $author) {\n    id\n    full_name\n  }\n}\n", "variables"=>{"author"=>{"first_name"=>"Jerry"}}, "operationName"=>"updateAuthor"}}
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "authors" SET "first_name" = ?, "updated_at" = ? WHERE "authors"."id" = ?[0m  [["first_name", "Jerry"], ["updated_at", "2018-02-28 09:52:40.979734"], ["id", 6]]
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 7.1ms)
+
+
