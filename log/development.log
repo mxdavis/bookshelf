@@ -477,3 +477,39 @@ Processing by GraphqlController#execute as */*
 Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 7.1ms)
 
 
+Started POST "/graphql" for 127.0.0.1 at 2018-02-28 11:58:48 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  deleteAuthor(id: 6) {}\n}\n", "variables"=>{"author"=>{"first_name"=>"Jerry"}}, "graphql"=>{"query"=>"mutation {\n  deleteAuthor(id: 6) {}\n}\n", "variables"=>{"author"=>{"first_name"=>"Jerry"}}}}
+Completed 500 Internal Server Error in 14ms
+
+
+  
+NameError (uninitialized constant Types::Boolean):
+  
+app/graphql/mutations/delete_author.rb:6:in `<class:DeleteAuthor>'
+app/graphql/mutations/delete_author.rb:1:in `<top (required)>'
+app/graphql/types/mutation_type.rb:15:in `block in <top (required)>'
+app/graphql/bookshelf_schema.rb:1:in `<top (required)>'
+app/controllers/graphql_controller.rb:10:in `execute'
+Started POST "/graphql" for 127.0.0.1 at 2018-02-28 11:59:38 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  deleteAuthor(id: 6) {}\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  deleteAuthor(id: 6) {}\n}\n", "variables"=>nil}}
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "authors" WHERE "authors"."id" = ?[0m  [["id", 6]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 34ms (Views: 0.2ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-02-28 11:59:40 +0200
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"mutation {\n  deleteAuthor(id: 6) {}\n}\n", "variables"=>nil, "graphql"=>{"query"=>"mutation {\n  deleteAuthor(id: 6) {}\n}\n", "variables"=>nil}}
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Author with 'id'=6):
+  
+app/graphql/mutations/delete_author.rb:23:in `call'
+app/controllers/graphql_controller.rb:10:in `execute'
