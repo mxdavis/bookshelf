@@ -31,4 +31,14 @@ Types::AuthorType = GraphQL::ObjectType.define do
   end
 
   field :publication_years, types[types.Int]
+
+  #to see errors the query must include "errors" as defined in the field below
+  #  mutation createAuthor($author:AuthorInputType) {
+  #    createAuthor(author: $author) {
+  #      errors
+  #    }
+  #  }
+  field :errors, types[types.String], "Reasons this object could not be saved" do
+    resolve ->(obj, _, _) {obj.errors.to_a}
+  end
 end
