@@ -14,4 +14,10 @@ Types::MutationType = GraphQL::ObjectType.define do
   field :updateAuthor, function: Mutations::UpdateAuthor.new
   field :deleteAuthor, function: Mutations::DeleteAuthor.new
 
+  # Query
+  # mutation { logout }
+  field :logout, types.Boolean do
+    resolve ->(_, _, ctx) {Session.where(key: ctx[:session_key]).destroy_all}
+  end
+
 end
