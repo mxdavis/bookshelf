@@ -37,6 +37,7 @@ Types::QueryType = GraphQL::ObjectType.define do
   end
 
   field :all_authors, types[Types::AuthorType] do
+    is_public true
     description "All the authors in the database"
     resolve ->(_, _, _) {Author.all}
   end
