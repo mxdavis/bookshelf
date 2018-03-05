@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305193820) do
+ActiveRecord::Schema.define(version: 20180305194157) do
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20180305193820) do
     t.boolean "is_alive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "key"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
